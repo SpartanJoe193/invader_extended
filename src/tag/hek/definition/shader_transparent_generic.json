@@ -21,8 +21,8 @@
             "map alpha 1",
             "map alpha 2",
             "map alpha 3",
-            "vertex alpha 0 fog",
-            "vertex alpha 1 fade perpendicular",
+            "vertex alpha 0 (fog)",
+            "vertex alpha 1 (fade perpendicular)",
             "scratch alpha 0",
             "scratch alpha 1",
             "constant alpha 0",
@@ -42,8 +42,8 @@
             "map alpha 1",
             "map alpha 2",
             "map alpha 3",
-            "vertex alpha 0 fade none",
-            "vertex alpha 1 fade perpendicular",
+            "vertex alpha 0 fade (none)",
+            "vertex alpha 1 fade (perpendicular)",
             "scratch alpha 0",
             "scratch alpha 1",
             "constant alpha 0",
@@ -52,8 +52,8 @@
             "map blue 1",
             "map blue 2",
             "map blue 3",
-            "vertex blue 0 blue light",
-            "vertex blue 1 fade parallel",
+            "vertex blue 0 blue (none)",
+            "vertex blue 1 fade (parallel)",
             "scratch blue 0",
             "scratch blue 1",
             "constant blue 0",
@@ -63,9 +63,10 @@
     },
     {
         "name": "ShaderTransparentGenericStageInputMappingColor",
+        "description": "Here is a quick run down:\n\n- clamp(x):                             max(x, 0)\n- invert clamp(x):                      1.0-clamp(x, 0.0, 1.0)\n- expand (2*x-1):                       2.0*max(x, 0.0)-1.0\n- expand negate (2*x-1):                -2.0*max(x, 0.0)+1.0\n- half bias (clamp(x) - 1/2)            max(x, 0) - 0.5\n- half bias negate (clamp(x) - 1/2)     -max(x, 0) + 0.5\n- x                                     x               \n- -x                                    -x"
         "options": [
             "clamp(x)",
-            "1-clamp (x)",
+            "invert clamp(x)",
             "expand (2*x-1)",
             "expand negate (-2*x+1)",
             "half bias (clamp(x)-1/2)",
@@ -77,6 +78,7 @@
     },
     {
         "name": "ShaderTransparentGenericStageOutputFunction",
+        "description": "- multiply = clamp(a*b, -1.0, 1.0)\n- dot = do (a, b)\n    if color: a.r*b.r + a.g*b.g + a.b*b.b\n    if alpha: a.a*b.a \n",
         "options": [
             "multiply",
             "dot product"
