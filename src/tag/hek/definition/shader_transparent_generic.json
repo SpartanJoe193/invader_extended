@@ -11,8 +11,8 @@
             "map color 1",
             "map color 2",
             "map color 3",
-            "vertex color 0 diffuse light",
-            "vertex color 1 fade perpendicular",
+            "vertex color 0 (fog)",
+            "vertex color 1 ",
             "scratch color 0",
             "scratch color 1",
             "constant color 0",
@@ -21,7 +21,7 @@
             "map alpha 1",
             "map alpha 2",
             "map alpha 3",
-            "vertex alpha 0 fade none",
+            "vertex alpha 0 fog",
             "vertex alpha 1 fade perpendicular",
             "scratch alpha 0",
             "scratch alpha 1",
@@ -64,14 +64,14 @@
     {
         "name": "ShaderTransparentGenericStageInputMappingColor",
         "options": [
-            "clamp x",
-            "1 clamp x",
-            "2",
-            "1 2",
-            "clamp x 1 2",
-            "1 2 clamp x",
+            "clamp(x)",
+            "1-clamp (x)",
+            "expand (2*x-1)",
+            "expand negate (-2*x+1)",
+            "half bias (clamp(x)-1/2)",
+            "half bias negate (-clamp(x)+1/2)",
             "x",
-            "x 1"
+            "-x"
         ],
         "type": "enum"
     },
@@ -87,10 +87,10 @@
         "name": "ShaderTransparentGenericStageOutputMapping",
         "options": [
             "color identity",
-            "color scale by 1 2",
+            "color scale by 1/2",
             "color scale by 2",
             "color scale by 4",
-            "color bias by 1 2",
+            "color bias by 1/2",
             "color expand normal"
         ],
         "type": "enum"
